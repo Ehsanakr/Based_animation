@@ -1608,47 +1608,33 @@ const sectionThreeWrap = document.getElementById("sectionThreeContent");
 const sectionFourWrap = document.getElementById("sectionFourContent");
 const sectionFiveWrap = document.getElementById("sectionFiveContent");
 
-const homeBtn = document.getElementById("homeBtn");
 const howItWorksBtn = document.getElementById("howItWorksBtn");
 const leanMoreBtn = document.getElementById("leanMoreBtn");
-homeBtn.addEventListener("click", function () {
-});
+
 leanMoreBtn.addEventListener("click", function () {
 });
 howItWorksBtn.addEventListener("click", function () {
 });
 
-const burgerHomeBtn = document.getElementById("burgerHomeBtn");
-const burgerHowItWorksBtn = document.getElementById("burgerHowItWorksBtn");
-const burgerLearnMore = document.getElementById("burgerLearnMore");
-burgerHomeBtn.addEventListener("click", function () {
-});
-burgerHowItWorksBtn.addEventListener("click", function () {
-});
-burgerLearnMore.addEventListener("click", function () {
-});
 
 //---SCROLLFUNCTIONS---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 $(window).scroll(function () {
   //ONE  - section functions based on current section
   if (window.scrollY == sectionOne) {
     sectionOneWrap.style.opacity = 1;
-    burgerHomeBtn.style.color = "#ff6464";
     howItWorksBtn.classList.remove("red");
     
 
   } else {
     sectionOneWrap.style.opacity = 0;
-    burgerHomeBtn.style.color = "#fff";
-    burgerHowItWorksBtn.style.color = "#fff";
 
   }
+
 
   //TWO  - section functions based on current section
   if (window.scrollY == sectionTwo) {
     sectionTwoWrap.style.opacity = 1;
     howItWorksBtn.classList.add("red");
-    burgerHowItWorksBtn.style.color = "#ff6464";
     $("#howItWorks1").css("pointer-events", "auto");
   } else {
     sectionTwoWrap.style.opacity = 0;
@@ -1660,7 +1646,6 @@ $(window).scroll(function () {
     $("#howItWorks2").css("pointer-events", "auto");
     
     howItWorksBtn.classList.add("red");
-    burgerHowItWorksBtn.style.color = "#ff6464";
   } else {
     sectionThreeWrap.style.opacity = 0;
     $("#howItWorks2").css("pointer-events", "none");
@@ -1671,7 +1656,6 @@ $(window).scroll(function () {
     $("#howItWorks3").css("pointer-events", "auto");
 
     howItWorksBtn.classList.add("red");
-    burgerHowItWorksBtn.style.color = "#ff6464";
   } else {
     sectionFourWrap.style.opacity = 0;
     $("#howItWorks3").css("pointer-events", "none");
@@ -1682,15 +1666,11 @@ $(window).scroll(function () {
     sectionFiveWrap.style.opacity = 1;
     $("#reachus").css("pointer-events", "auto");
     howItWorksBtn.classList.remove("red");
-    burgerHowItWorksBtn.style.color = "#fff";
     leanMoreBtn.classList.add("red");
-
-    burgerLearnMore.style.color = "#ff6464";
   } else {
     sectionFiveWrap.style.opacity = 0;
     $("#reachus").css("pointer-events", "none");
     leanMoreBtn.classList.remove("red");
-    burgerLearnMore.style.color = "#fff";
   }
 
   //scrollbar style
