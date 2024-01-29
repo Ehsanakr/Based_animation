@@ -1608,12 +1608,17 @@ const sectionThreeWrap = document.getElementById("sectionThreeContent");
 const sectionFourWrap = document.getElementById("sectionFourContent");
 const sectionFiveWrap = document.getElementById("sectionFiveContent");
 
+const logoBtn = document.getElementById("logoBtn");
 const howItWorksBtn = document.getElementById("howItWorksBtn");
 const leanMoreBtn = document.getElementById("leanMoreBtn");
-
+logoBtn.addEventListener("click", function () {
+  $.scrollify.move("#1");
+});
 leanMoreBtn.addEventListener("click", function () {
+  $.scrollify.move("#5");
 });
 howItWorksBtn.addEventListener("click", function () {
+  $.scrollify.move("#2");
 });
 
 
