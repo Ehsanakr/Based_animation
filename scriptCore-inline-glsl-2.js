@@ -1637,6 +1637,7 @@ $(window).scroll(function () {
 
   }
 
+  
   //TWO  - section functions based on current section
   if (window.scrollY == sectionTwo) {
     sectionTwoWrap.style.opacity = 1;
