@@ -1481,29 +1481,6 @@ const listItem4 = document.getElementById("listItem4");
 const listItem5 = document.getElementById("listItem5");
 const listItem6 = document.getElementById("listItem6");
 
-listItem0.addEventListener("click", function () {
-  counter=0.0;
-  startCounter(400); // Set the initial target value
-});
-listItem1.addEventListener("click", function () {
-  startCounter(100, 9); // Set the initial target value and speed
-});
-listItem2.addEventListener("click", function () {
-  startCounter(150, 9); // Set the initial target value and speed
-});
-listItem3.addEventListener("click", function () {
-  startCounter(200, 9); // Set the initial target value and speed
-});
-listItem4.addEventListener("click", function () {
-  startCounter(250, 9); // Set the initial target value and speed
-});
-listItem5.addEventListener("click", function () {
-  startCounter(300, 9); // Set the initial target value and speed
-});
-listItem6.addEventListener("click", function () {
-  startCounter(350, 9); // Set the initial target value and speed
-});
-
 // Update colors based on the counter value
 function updateColors() {
   if (counter > 50 && counter <= 100) {
@@ -1604,30 +1581,13 @@ introTimeline.from(uniforms.iAnimProgress_2.value, {
   duration: 3.0,
 });
 
-//---SCROLLIFY---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+//------↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
-// Initialize Scrollify with mandatory snap scrolling
-$.scrollify({
-  section: "section",
-  scrollSpeed: 500,
-  scrollbars: false,
-  setHeights: false,
-  snap: true,
-  scrollSnapOffset: 0,
-  easing: "easeOutSine",
-});
 
-// Dark/Light mode function
-const toggleSwitch = document.getElementById("toggleSwitch");
-const htmlElement = document.querySelector("html");
-toggleSwitch.addEventListener("change", function () {
-  htmlElement.style.filter = toggleSwitch.checked
-    ? "invert(0%) hue-rotate(0deg)"
-    : "invert(100%) hue-rotate(180deg)";
-});
+
+
 //---LOAD FUNCTIONS--
 $(document).ready(function () {
-  $.scrollify.move("#1");
   $("#reachus").css("pointer-events", "none");
   $("#progressbar").css("height", "0");
 });
@@ -1648,11 +1608,10 @@ const sectionThreeWrap = document.getElementById("sectionThreeContent");
 const sectionFourWrap = document.getElementById("sectionFourContent");
 const sectionFiveWrap = document.getElementById("sectionFiveContent");
 
-const darkLightBtn = document.getElementById("darkLightBtn");
-const homeBtn = document.getElementById("homeBtn");
+const logoBtn = document.getElementById("logoBtn");
 const howItWorksBtn = document.getElementById("howItWorksBtn");
 const leanMoreBtn = document.getElementById("leanMoreBtn");
-homeBtn.addEventListener("click", function () {
+logoBtn.addEventListener("click", function () {
   $.scrollify.move("#1");
 });
 leanMoreBtn.addEventListener("click", function () {
@@ -1662,42 +1621,25 @@ howItWorksBtn.addEventListener("click", function () {
   $.scrollify.move("#2");
 });
 
-const burgerHomeBtn = document.getElementById("burgerHomeBtn");
-const burgerHowItWorksBtn = document.getElementById("burgerHowItWorksBtn");
-const burgerLearnMore = document.getElementById("burgerLearnMore");
-burgerHomeBtn.addEventListener("click", function () {
-  $.scrollify.move("#1");
-});
-burgerHowItWorksBtn.addEventListener("click", function () {
-  $.scrollify.move("#2");
-});
-burgerLearnMore.addEventListener("click", function () {
-  $.scrollify.move("#5");
-});
 
 //---SCROLLFUNCTIONS---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 $(window).scroll(function () {
   //ONE  - section functions based on current section
   if (window.scrollY == sectionOne) {
     sectionOneWrap.style.opacity = 1;
-    burgerHomeBtn.style.color = "#ff6464";
     howItWorksBtn.classList.remove("red");
     
-    darkLightBtn.style.opacity = 1;
-    $("#darkLightBtn").css("pointer-events", "auto");
+
   } else {
     sectionOneWrap.style.opacity = 0;
-    burgerHomeBtn.style.color = "#fff";
-    burgerHowItWorksBtn.style.color = "#fff";
-    darkLightBtn.style.opacity = 0;
-    $("#darkLightBtn").css("pointer-events", "none");
+
   }
+
 
   //TWO  - section functions based on current section
   if (window.scrollY == sectionTwo) {
     sectionTwoWrap.style.opacity = 1;
     howItWorksBtn.classList.add("red");
-    burgerHowItWorksBtn.style.color = "#ff6464";
     $("#howItWorks1").css("pointer-events", "auto");
   } else {
     sectionTwoWrap.style.opacity = 0;
@@ -1709,7 +1651,6 @@ $(window).scroll(function () {
     $("#howItWorks2").css("pointer-events", "auto");
     
     howItWorksBtn.classList.add("red");
-    burgerHowItWorksBtn.style.color = "#ff6464";
   } else {
     sectionThreeWrap.style.opacity = 0;
     $("#howItWorks2").css("pointer-events", "none");
@@ -1720,7 +1661,6 @@ $(window).scroll(function () {
     $("#howItWorks3").css("pointer-events", "auto");
 
     howItWorksBtn.classList.add("red");
-    burgerHowItWorksBtn.style.color = "#ff6464";
   } else {
     sectionFourWrap.style.opacity = 0;
     $("#howItWorks3").css("pointer-events", "none");
@@ -1731,15 +1671,11 @@ $(window).scroll(function () {
     sectionFiveWrap.style.opacity = 1;
     $("#reachus").css("pointer-events", "auto");
     howItWorksBtn.classList.remove("red");
-    burgerHowItWorksBtn.style.color = "#fff";
     leanMoreBtn.classList.add("red");
-
-    burgerLearnMore.style.color = "#ff6464";
   } else {
     sectionFiveWrap.style.opacity = 0;
     $("#reachus").css("pointer-events", "none");
     leanMoreBtn.classList.remove("red");
-    burgerLearnMore.style.color = "#fff";
   }
 
   //scrollbar style
