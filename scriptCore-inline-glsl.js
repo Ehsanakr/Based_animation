@@ -1484,25 +1484,37 @@ const listItem6 = document.getElementById("listItem6");
 // Update colors based on the counter value
 function updateColors() {
   if (counter > 50 && counter <= 100) {
+    listItem1.classList.add("red");
   } else {
+    listItem1.classList.remove("red");
   }
 
   if (counter > 100 && counter <= 150) {
+    listItem2.classList.add("red");
   } else {
+    listItem2.classList.remove("red");
   }
 
   if (counter > 150 && counter <= 200) {
+    listItem3.classList.add("red");
   } else {
+    listItem3.classList.remove("red");
   }
   if (counter > 200 && counter <= 250) {
+    listItem4.classList.add("red");
   } else {
+    listItem4.classList.remove("red");
   }
 
   if (counter > 250 && counter <= 300) {
+    listItem5.classList.add("red");
   } else {
+    listItem5.classList.remove("red");
   }
   if (counter > 300 && counter <= 350) {
+    listItem6.classList.add("red");
   } else {
+    listItem6.classList.remove("red");
   }
   if (counter >= 399 ) {
     counter=0; // Set the initial target value
@@ -1583,3 +1595,151 @@ $(document).ready(function () {
 
 
 
+
+//---MY MAIN---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+const sectionOne = document.getElementById("home").offsetTop;
+const sectionTwo = document.getElementById("howItWorks1").offsetTop;
+const sectionThree = document.getElementById("howItWorks2").offsetTop;
+const sectionFour = document.getElementById("howItWorks3").offsetTop;
+const sectionFive = document.getElementById("reachus").offsetTop;
+const sectionOneWrap = document.getElementById("sectionOneContent");
+const sectionTwoWrap = document.getElementById("sectionTwoContent");
+const sectionThreeWrap = document.getElementById("sectionThreeContent");
+const sectionFourWrap = document.getElementById("sectionFourContent");
+const sectionFiveWrap = document.getElementById("sectionFiveContent");
+
+const howItWorksBtn = document.getElementById("howItWorksBtn");
+const leanMoreBtn = document.getElementById("leanMoreBtn");
+
+leanMoreBtn.addEventListener("click", function () {
+});
+howItWorksBtn.addEventListener("click", function () {
+});
+
+const burgerHowItWorksBtn = document.getElementById("burgerHowItWorksBtn");
+const burgerLearnMore = document.getElementById("burgerLearnMore");
+burgerHowItWorksBtn.addEventListener("click", function () {
+});
+burgerLearnMore.addEventListener("click", function () {
+});
+
+//---SCROLLFUNCTIONS---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+$(window).scroll(function () {
+  //ONE  - section functions based on current section
+  if (window.scrollY == sectionOne) {
+    sectionOneWrap.style.opacity = 1;
+    howItWorksBtn.classList.remove("red");
+    
+
+  } else {
+    sectionOneWrap.style.opacity = 0;
+    burgerHowItWorksBtn.style.color = "#fff";
+
+  }
+
+  //TWO  - section functions based on current section
+  if (window.scrollY == sectionTwo) {
+    sectionTwoWrap.style.opacity = 1;
+    howItWorksBtn.classList.add("red");
+    burgerHowItWorksBtn.style.color = "#ff6464";
+    $("#howItWorks1").css("pointer-events", "auto");
+  } else {
+    sectionTwoWrap.style.opacity = 0;
+    $("#howItWorks1").css("pointer-events", "none");
+  }
+  //THREE  - section functions based on current section
+  if (window.scrollY == sectionThree) {
+    sectionThreeWrap.style.opacity = 1;
+    $("#howItWorks2").css("pointer-events", "auto");
+    
+    howItWorksBtn.classList.add("red");
+    burgerHowItWorksBtn.style.color = "#ff6464";
+  } else {
+    sectionThreeWrap.style.opacity = 0;
+    $("#howItWorks2").css("pointer-events", "none");
+  }
+  //FOUR  - section functions based on current section
+  if (window.scrollY == sectionFour) {
+    sectionFourWrap.style.opacity = 1;
+    $("#howItWorks3").css("pointer-events", "auto");
+
+    howItWorksBtn.classList.add("red");
+    burgerHowItWorksBtn.style.color = "#ff6464";
+  } else {
+    sectionFourWrap.style.opacity = 0;
+    $("#howItWorks3").css("pointer-events", "none");
+
+  }
+  //FIVE  - section functions based on current section
+  if (window.scrollY == sectionFive) {
+    sectionFiveWrap.style.opacity = 1;
+    $("#reachus").css("pointer-events", "auto");
+    howItWorksBtn.classList.remove("red");
+    burgerHowItWorksBtn.style.color = "#fff";
+    leanMoreBtn.classList.add("red");
+
+    burgerLearnMore.style.color = "#ff6464";
+  } else {
+    sectionFiveWrap.style.opacity = 0;
+    $("#reachus").css("pointer-events", "none");
+    leanMoreBtn.classList.remove("red");
+    burgerLearnMore.style.color = "#fff";
+  }
+
+  //scrollbar style
+  var scroll = $(window).scrollTop();
+  var dh = $(document).height();
+  var wh = $(window).height();
+  var scrollPercent = (scroll / (dh - wh)) * wh;
+  $("#progressbar").css("height", scrollPercent + "px");
+});
+
+
+
+
+//---ROLLDOWNTEXT---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+
+const changingWords = [
+  "CRYPTOS",
+  "COMMODITIES",
+  "AGREEMENTS",
+  "FUTURES",
+  "TRADING",
+  "OPTIONS",
+  "DERIVATIVES",
+  "PERPETUALS",
+  "BONDS",
+  "STOCKS",
+];
+
+// Index to keep track of the current word
+let currentIndex = 0;
+
+// Function to update the changing word with an animation
+function updateChangingWord() {
+  const changingWordElement = document.getElementById("changingWord");
+  const textContainerElement = document.getElementById("rollingTextContainer");
+
+  textContainerElement.style.width = `${changingWordElement.offsetWidth}px`; // Set the width to the current word's width
+
+  changingWordElement.classList.remove("fade-in");
+  changingWordElement.classList.add("fade-out");
+
+  setTimeout(() => {
+    changingWordElement.textContent = changingWords[currentIndex];
+    changingWordElement.classList.remove("fade-out");
+    changingWordElement.classList.add("fade-in");
+
+    // Update the container width after changing the word
+    textContainerElement.style.width = `${changingWordElement.offsetWidth}px`;
+
+    currentIndex = (currentIndex + 1) % changingWords.length;
+  }, 500); // Adjust the duration as needed
+}
+
+// Initial call to start the animation
+updateChangingWord();
+
+// Set up a timer to change the word at intervals
+setInterval(updateChangingWord, 3000); // Change the word every 3 seconds, adjust as needed
+//---ROLLDOWNTEXT---↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
