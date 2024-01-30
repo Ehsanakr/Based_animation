@@ -1,43 +1,52 @@
-<style>
-    .red{
-	transform: scale();
-	transition: all;
-	transition-duration: 0.2s;
-	color: #ff6464;
-	letter-spacing: .2px;
-}
-</style>
-<div style="height: 100vh; width: 100vh; position: fixed;" id="webGLID"></div>
-<section style="height: 100vh; width: 100vw; position: relative;" id="home"><H1 style="color: aliceblue;">1</H1></section>
-<section style="height: 100vh; width: 100vw; position: relative;" id="howItWorks1">
-    <div id="sectionTwoContent"
-        class="fixed z-10 opacity-0  px-8 lg:px-20 py-4 lg:py-20 transition-opacity ease-in-out duration-500">
-        <div class="flex flex-col w-[95%] lg:w-[80%] text-left">
-            <a id="listItem0"
-                class=" text-[22px] lg:text-[1.6vw] mb-8 leading-[1.4em] font-semibold cursor-pointer bg-gradient-to-r from-[#ffffff] via-[#ff6e6e] to-[#ff6e6e] bg-clip-text text-transparent">
-                HOW TO TRADE DERIVATIVES with INTENTs using SYMMIO.</a>
-            <div id="" class="flex flex-col text-l lg:text-[1.2vw] ml-2 lg:ml-8">
-                <a id="listItem1" class="cursor-pointer hover:text-[#ffaaaa]">
-                    • FORMULATE your INTENT via 3rd party frontend</a>
-                <a id="listItem2" class="cursor-pointer hover:text-[#ffaaaa]">
-                    • SEND your INTENT to the pool</a>
-                <a id="listItem3" class="cursor-pointer hover:text-[#ffaaaa]">
-                    • Counterparties (Hedgers) SEE your INTENT in the pool</a>
-                <a id="listItem4" class="cursor-pointer hover:text-[#ffaaaa]">
-                    • Counterparty (Hedger) CLAIMs your intent</a>
-                <a id="listItem5" class="cursor-pointer hover:text-[#ffaaaa]">
-                    • Claimed INTENTs CREATE a trade</a>
-                <a id="listItem6" class="cursor-pointer hover:text-[#ffaaaa]">
-                    • Both parties LOCK collateral</a>
-            </div>
-        </div>
-
-</section><section style="height: 100vh; width: 100vw; position: relative" id="howItWorks2"><H1 style="color: aliceblue;">3</H1></section>
-<section style="height: 100vh; width: 100vw; position: relative" id="howItWorks3"><H1 style="color: aliceblue;">4</H1></section>
-<section style="height: 100vh; width: 100vw; position: relative " id="reachus"><H1 style="color: aliceblue;">5</H1></section>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
-<script src="./scriptCore-inline-glsl-2.js"></script>
+<style>
+    .red {
+        transform: scale();
+        transition: all;
+        transition-duration: 0.2s;
+        color: #ff6464;
+        letter-spacing: .2px;
+    }
+</style>
+<div style="height: 100vh; width: 100vh; position: fixed;" id="webGLID"></div>
+<section id="home" style="height: 100vh; width: 100vw; position: relative;">
+    <H1 style="color: aliceblue;">A SYMETRICAL PROTCOL FOR</H1>
+</section>
+<section id="howItWorks1" style="height: 100vh; width: 100vw; position: relative;">
+    <div id="sectionTwoContent">
+        <div style="color: #fff ; display:flex ; flex-direction: column;">
+            <a id="listItem0">
+                HOW TO TRADE DERIVATIVES with INTENTs using SYMMIO.</a>
+            <div id="" class="">
+                <a id="listItem1" style="cursor: pointer;">
+                    • FORMULATE your INTENT via 3rd party frontend</a><br>
+                <a id="listItem2"  style="cursor: pointer;">
+                    • SEND your INTENT to the pool</a><br>
+                <a id="listItem3"  style="cursor: pointer;">
+                    • Counterparties (Hedgers) SEE your INTENT in the pool</a><br>
+                <a id="listItem4"  style="cursor: pointer;">
+                    • Counterparty (Hedger) CLAIMs your intent</a><br>
+                <a id="listItem5"  style="cursor: pointer;">
+                    • Claimed INTENTs CREATE a trade</a><br>
+                <a id="listItem6"  style="cursor: pointer;">
+                    • Both parties LOCK collateral</a><br>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="howItWorks2" style="height: 100vh; width: 100vw; position: relative">
+    <H1 style="color: aliceblue;">Neutrual parties as arbiters</H1>
+</section>
+<section id="howItWorks3" style="height: 100vh; width: 100vw; position: relative">
+    <H1 style="color: aliceblue;">Symmetrical Trade </H1>
+</section>
+<section id="reachus" style="height: 100vh; width: 100vw; position: relative ">
+    <H1 style="color: aliceblue;">Intent to know more ?</H1>
+</section>
+
+
+<script src="./helperScript.js"></script>
+<script src="./scriptCore-fetch-glsl-2.js"></script>
