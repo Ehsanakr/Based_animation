@@ -1,19 +1,18 @@
 <head>
 	<script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
-	<script src="./anim_init.js"></script>
+	<script src="./anim_init_2.js"></script>
 	<!-- write your code here -->
 </head>
 
-<body >
-	<script>
-		window.onload = function () {
-			init();
-};
-	</script>
-	<div id="animation_container" style="width:800px; height:600px">
-		<canvas id="canvas"></canvas>
-		<div id="dom_overlay_container">
-		</div>
-	</div>
+<body>
 
+	<div id="animation_container">
+		<canvas id="canvas" style="width: 100%;"></canvas>
+		<div id="dom_overlay_container" ></div>
+		<script>
+			window.onload = function () {
+				init();
+			};
+		</script>
+	</div>
 </body>
