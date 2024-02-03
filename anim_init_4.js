@@ -1,3 +1,7 @@
+window.onload = function () {
+  init();
+};
+
 (function (cjs, an) {
   var p; // shortcut to reference prototypes
   var lib = {};
@@ -4855,7 +4859,7 @@
   // library properties:
   lib.properties = {
     id: "5EEE019FF2060B40941A9CF2938A1CC9",
-    width: 800, 
+    width: 800,
     height: 600,
     fps: 24,
     manifest: [
@@ -4957,7 +4961,7 @@
     resizeCanvas();
     function resizeCanvas() {
       var w = lib.properties.width,
-        h = lib.properties.height;
+        h = lib.properties.height / 1.2;
       var iw = window.innerWidth,
         ih = window.innerHeight;
       var pRatio = window.devicePixelRatio,
@@ -4965,21 +4969,17 @@
         yRatio = ih / h,
         sRatio = 1;
       if (isResp) {
-
-          sRatio = lastS;
-        } else if (!isScale) {
-          if (iw < w || ih < h) sRatio = Math.min(xRatio, yRatio);
-        } else if (scaleType == 1) {
-          sRatio = Math.min(xRatio, yRatio);
-        } else if (scaleType == 2) {
-          sRatio = Math.max(xRatio, yRatio);
+        sRatio = lastS;
+      } else if (!isScale) {
+        if (iw < w || ih < h) sRatio = Math.min(xRatio, yRatio);
+      } else if (scaleType == 1) {
+        sRatio = Math.min(xRatio, yRatio);
+      } else if (scaleType == 2) {
+        sRatio = Math.max(xRatio, yRatio);
       }
       domContainers[0].width = w * pRatio * sRatio;
       domContainers[0].height = h * pRatio * sRatio;
-      domContainers.forEach(function (container) {
-        container.style.width = w * sRatio + "px";
-        container.style.height = h * sRatio + "px";
-      });
+      domContainers.forEach(function (container) {});
       stage.scaleX = pRatio * sRatio;
       stage.scaleY = pRatio * sRatio;
       lastW = iw;
@@ -5023,16 +5023,9 @@
   };
 })((createjs = createjs || {}), (AdobeAn = AdobeAn || {}));
 var createjs, AdobeAn;
-var canvas,
-  stage,
-  exportRoot,
-  anim_container,
-  dom_overlay_container,
-  fnStartAnimation;
+var canvas, stage, exportRoot, fnStartAnimation;
 function init() {
   canvas = document.getElementById("canvas");
-  anim_container = document.getElementById("animation_container");
-  dom_overlay_container = document.getElementById("dom_overlay_container");
   var comp = AdobeAn.getComposition("5EEE019FF2060B40941A9CF2938A1CC9");
   var lib = comp.getLibrary();
   var loader = new createjs.LoadQueue(false);
@@ -5072,11 +5065,7 @@ function handleComplete(evt, comp) {
     createjs.Ticker.addEventListener("tick", stage);
   };
   //Code to support hidpi screens and responsive scaling.
-  AdobeAn.makeResponsive(false, "both", false, 1, [
-    canvas,
-    anim_container,
-    dom_overlay_container,
-  ]);
+  AdobeAn.makeResponsive(false, "both", false, 1, [canvas]);
   AdobeAn.compositionLoaded(lib.properties.id);
   fnStartAnimation();
 }
