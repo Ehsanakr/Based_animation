@@ -331,7 +331,15 @@ burgerHowItWorksBtn.addEventListener("click", function () {
 burgerLearnMore.addEventListener("click", function () {
   $.scrollify.move("#5");
 });
-
+$(document).ready(function () {
+  // Scroll To top on load
+$("html, body").animate(
+ {
+   scrollTop: $("#home").offset().top,
+ },
+ 500
+);
+});
 //---SCROLLFUNCTIONS---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 $(window).scroll(function () {
   //ONE  - section functions based on current section
