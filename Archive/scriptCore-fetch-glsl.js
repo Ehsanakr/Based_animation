@@ -25,7 +25,7 @@ function init() {
   // Vertex shader
   const vertexShaderCode = "void main() {gl_Position = vec4(position, 1.0);}";
   // Fetch the content of the fragment shader file
-  fetch("https://cdn.jsdelivr.net/gh/User22807/Based_animation@main/fragmentShader.glsl")
+  fetch("./fragmentShader.glsl")
     .then((response) => response.text())
     .then((fragShaderCode) => {
       const material = new THREE.ShaderMaterial({

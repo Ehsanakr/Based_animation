@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Play Pause Button</title>
+  <style>
+    body {
+      background-color: green;
+      width: 100vw;
+      height: 100vh; 
+    }
+
+    #play-pause-button {
+      font-size: 50px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <a id="play-pause-button" class="fa fa-play"></a>
+
+  <script>
+    var playPauseButton = document.getElementById('play-pause-button');
+
+    playPauseButton.addEventListener("click", function() {
+      if (playPauseButton.classList.contains('fa-play')) {
+        playPauseButton.classList.remove('fa-play');
+        playPauseButton.classList.add('fa-pause');
+      } else {
+        playPauseButton.classList.remove('fa-pause');
+        playPauseButton.classList.add('fa-play');
+      }
+    });
+  </script>
+
+</body>
+</html>

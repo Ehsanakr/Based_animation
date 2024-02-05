@@ -25,7 +25,7 @@ function init() {
   // Vertex shader
   const vertexShaderCode = "void main() {gl_Position = vec4(position, 1.0);}";
   // Fetch the content of the fragment shader file
-  fetch("https://cdn.jsdelivr.net/gh/User22807/Based_animation@main/fragmentShader.glsl")
+  fetch("./fragmentShader.glsl")
     .then((response) => response.text())
     .then((fragShaderCode) => {
       const material = new THREE.ShaderMaterial({
@@ -39,7 +39,6 @@ function init() {
 
       // ... (rest of your init() function)
     });
-
 
   renderer = new THREE.WebGLRenderer();
   renderer.setPixelRatio(window.devicePixelRatio);
@@ -92,6 +91,7 @@ function startCounter(targetValue, speed = 2) {
 
       // Update colors based on the counter value
       updateColors();
+      setScrollPerc(counter);
 
       uniforms.iAnimTimer.value = counter;
     } else {
@@ -108,8 +108,6 @@ function startCounter(targetValue, speed = 2) {
 function resetCounter() {
   clearInterval(counterInterval); // Stop the counter interval
   counterInterval = null; // Set counterInterval to null
-  counter = 0; // Reset the counter to 0
-
   // Reset colors to the initial state
   updateColors();
 }
@@ -131,113 +129,165 @@ function animCounter() {
   }
 }
 
+const progress = document.querySelector(".progress");
 
+function setScrollPerc(percentage) {
+  progress.style.strokeDashoffset = 264 - (percentage / 800) * 264;
+}
+
+const playToggle = document.querySelector(".control");
+playToggle.addEventListener("click", function () {
+  playToggle.classList.toggle("play");
+  playToggle.classList.toggle("pause");
+
+  if (playToggle.classList.contains("play")) {
+    resetCounter();
+    // Stop auto-scrolling, scroll to top, and restart auto-scrolling
+  } else {
+    startCounter(400); // Set the initial target value
+    // Start auto-scrolling
+  }
+});
 
 //---GSAP---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 gsap.to(uniforms.iAnimProgress_1.value, {
-    x: 1,
-    scrollTrigger: {
-      trigger: "#home",
-      start: "0%",
-      end: "100%",
-      scrub: true,
-      onUpdate: animCounter,
-    },
-  });
-  
-  gsap.to(uniforms.iAnimProgress_1.value, {
-    y: 1,
-    scrollTrigger: {
-      trigger: "#howItWorks1",
-      start: "0%",
-      end: "100%",
-      scrub: true,
-      onUpdate: animCounter,
-    },
-  });
-  
-  gsap.to(uniforms.iAnimProgress_1.value, {
-    z: 1,
-    scrollTrigger: {
-      trigger: "#howItWorks2",
-      start: "0%",
-      end: "100%",
-      scrub: true,
-    },
-  });
-  
-  gsap.to(uniforms.iAnimProgress_2.value, {
-    x: 1,
-    scrollTrigger: {
-      trigger: "#howItWorks3",
-      start: "0%",
-      end: "100%",
-      scrub: true,
-    },
-  });
-  gsap.to(uniforms.iAnimProgress_2.value, {
-    y: 1,
-    scrollTrigger: {
-      trigger: "#reachus",
-      start: "0%",
-      end: "100%",
-      scrub: true,
-    },
-  });
-  
-  // Intro animation timeline
-  const introTimeline = gsap.timeline();
-  introTimeline.from(uniforms.iAnimProgress_2.value, {
-    z: 2,
-    duration: 3.0,
-  });
+  x: 1,
+  scrollTrigger: {
+    trigger: "#home",
+    start: "0%",
+    end: "100%",
+    scrub: true,
+    onUpdate: animCounter,
+  },
+});
 
+gsap.to(uniforms.iAnimProgress_1.value, {
+  y: 1,
+  scrollTrigger: {
+    trigger: "#howItWorks1",
+    start: "0%",
+    end: "100%",
+    scrub: true,
+    onUpdate: animCounter,
+  },
+});
 
-  
-//---ROLLDOWNTEXT---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+gsap.to(uniforms.iAnimProgress_1.value, {
+  z: 1,
+  scrollTrigger: {
+    trigger: "#howItWorks2",
+    start: "0%",
+    end: "100%",
+    scrub: true,
+  },
+});
 
-const changingWords = [
-    "CRYPTOS",
-    "COMMODITIES",
-    "AGREEMENTS",
-    "FUTURES",
-    "TRADING",
-    "OPTIONS",
-    "DERIVATIVES",
-    "PERPETUALS",
-    "BONDS",
-    "STOCKS",
-  ];
-  
-  // Index to keep track of the current word
-  let currentIndex = 0;
-  
-  // Function to update the changing word with an animation
-  function updateChangingWord() {
-    const changingWordElement = document.getElementById("changingWord");
-    const textContainerElement = document.getElementById("rollingTextContainer");
-  
-    textContainerElement.style.width = `${changingWordElement.offsetWidth}px`; // Set the width to the current word's width
-  
-    changingWordElement.classList.remove("fade-in");
-    changingWordElement.classList.add("fade-out");
-  
-    setTimeout(() => {
-      changingWordElement.textContent = changingWords[currentIndex];
-      changingWordElement.classList.remove("fade-out");
-      changingWordElement.classList.add("fade-in");
-  
-      // Update the container width after changing the word
-      textContainerElement.style.width = `${changingWordElement.offsetWidth}px`;
-  
-      currentIndex = (currentIndex + 1) % changingWords.length;
-    }, 500); // Adjust the duration as needed
+gsap.to(uniforms.iAnimProgress_2.value, {
+  x: 1,
+  scrollTrigger: {
+    trigger: "#howItWorks3",
+    start: "0%",
+    end: "100%",
+    scrub: true,
+  },
+});
+gsap.to(uniforms.iAnimProgress_2.value, {
+  y: 1,
+  scrollTrigger: {
+    trigger: "#reachus",
+    start: "0%",
+    end: "100%",
+    scrub: true,
+  },
+});
+
+// Intro animation timeline
+const introTimeline = gsap.timeline();
+introTimeline.from(uniforms.iAnimProgress_2.value, {
+  z: 2,
+  duration: 3.0,
+});
+
+const listItem0 = document.getElementById("listItem0");
+const listItem1 = document.getElementById("listItem1");
+const listItem2 = document.getElementById("listItem2");
+const listItem3 = document.getElementById("listItem3");
+const listItem4 = document.getElementById("listItem4");
+const listItem5 = document.getElementById("listItem5");
+const listItem6 = document.getElementById("listItem6");
+
+listItem0.addEventListener("click", function () {
+  startCounter(1,30); // Set the initial target value
+  playToggle.classList.remove("play");
+  playToggle.classList.add("pause");
+});
+listItem1.addEventListener("click", function () {
+  startCounter(100, 9); // Set the initial target value and speed
+  playToggle.classList.remove("play");
+  playToggle.classList.add("pause");
+});
+listItem2.addEventListener("click", function () {
+  startCounter(150, 9); // Set the initial target value and speed
+  playToggle.classList.remove("play");
+  playToggle.classList.add("pause");
+});
+listItem3.addEventListener("click", function () {
+  startCounter(200, 9); // Set the initial target value and speed
+  playToggle.classList.remove("play");
+  playToggle.classList.add("pause");
+});
+listItem4.addEventListener("click", function () {
+  startCounter(250, 9); // Set the initial target value and speed
+  playToggle.classList.remove("play");
+  playToggle.classList.add("pause");
+});
+listItem5.addEventListener("click", function () {
+  startCounter(300, 9); // Set the initial target value and speed
+  playToggle.classList.remove("play");
+  playToggle.classList.add("pause");
+});
+listItem6.addEventListener("click", function () {
+  startCounter(350, 9); // Set the initial target value and speed
+  playToggle.classList.remove("play");
+  playToggle.classList.add("pause");
+});
+
+// Update colors based on the counter value
+function updateColors() {
+  if (counter > 50 && counter <= 100) {
+    listItem1.classList.add("red");
+  } else {
+    listItem1.classList.remove("red");
   }
-  
-  // Initial call to start the animation
-  updateChangingWord();
-  
-  // Set up a timer to change the word at intervals
-  setInterval(updateChangingWord, 3000); // Change the word every 3 seconds, adjust as needed
-  //---ROLLDOWNTEXT---↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-  
+
+  if (counter > 100 && counter <= 150) {
+    listItem2.classList.add("red");
+  } else {
+    listItem2.classList.remove("red");
+  }
+
+  if (counter > 150 && counter <= 200) {
+    listItem3.classList.add("red");
+  } else {
+    listItem3.classList.remove("red");
+  }
+  if (counter > 200 && counter <= 250) {
+    listItem4.classList.add("red");
+  } else {
+    listItem4.classList.remove("red");
+  }
+
+  if (counter > 250 && counter <= 300) {
+    listItem5.classList.add("red");
+  } else {
+    listItem5.classList.remove("red");
+  }
+  if (counter > 300 && counter <= 350) {
+    listItem6.classList.add("red");
+  } else {
+    listItem6.classList.remove("red");
+  }
+  if (counter >= 399) {
+    counter = 0; // Set the initial target value
+  }
+}
