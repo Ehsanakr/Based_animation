@@ -1,39 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Play Pause Button</title>
-  <style>
-    body {
-      background-color: green;
-      width: 100vw;
-      height: 100vh; 
-    }
+<audio id="myAudio" muted autoplay playsinline>
+  <source src="./better-day-186374.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<script>
+  window.onload = function() {
+  // Ensure audio can play even if muted:
+  var audio = document.getElementById("myAudio");
+  audio.play();
 
-    #play-pause-button {
-      font-size: 50px;
-      cursor: pointer;
-    }
-  </style>
-</head>
-<body>
-
-  <a id="play-pause-button" class="fa fa-play"></a>
-
-  <script>
-    var playPauseButton = document.getElementById('play-pause-button');
-
-    playPauseButton.addEventListener("click", function() {
-      if (playPauseButton.classList.contains('fa-play')) {
-        playPauseButton.classList.remove('fa-play');
-        playPauseButton.classList.add('fa-pause');
-      } else {
-        playPauseButton.classList.remove('fa-pause');
-        playPauseButton.classList.add('fa-play');
-      }
+  // Request user permission to unmute if desired:
+  if (audio.muted) {
+    const unmuteButton = document.createElement("button");
+    unmuteButton.textContent = "Unmute Audio";
+    unmuteButton.addEventListener("click", () => {
+      audio.muted = false;
     });
-  </script>
-
-</body>
-</html>
+    document.body.appendChild(unmuteButton);
+  }
+};
+</script>
