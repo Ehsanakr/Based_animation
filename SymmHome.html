@@ -2,29 +2,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
+<link rel="stylesheet" href="./symmioHome.css">
 
-<style>
-    body {
-        background-color: rgb(139, 67, 67);
-        color: #FFFFFF;
-        margin: 0%;
-        width: 100vw;
-        overflow-x: hidden;
-    }
-
-    /*-------------Play pause icon*/
-    main {
-        padding: 0% 5%;
-    }
-
-    .red {
-        transform: scale();
-        transition: all;
-        transition-duration: 0.2s;
-        color: #ff6464;
-        letter-spacing: .2px;
-    }
-</style>
 <div style="height: 100vh; width: 100vh; position: fixed;" id="webGLID"></div>
 <main class="container" style="height: 200vh;">
 
@@ -33,117 +12,6 @@
     </section>
     <section id="howItWorks1" style="height: 100vh; width: 100vw; position: relative;">
 
-        <style>
-            svg circle {
-                stroke: #36383f;
-                stroke-width: 1px;
-            }
-
-            svg .progress {
-                stroke-width: 2px;
-                transition: .1s;
-                stroke: #fff;
-            }
-
-            .player-box {
-                display: flex;
-                flex-direction: row;
-                align-content: center;
-                margin-left: -36px;
-
-            }
-
-            .scroll-progress-circle {
-                position: absolute;
-            }
-
-            .playButton {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: center;
-                margin-right: 18px;
-            }
-
-            .control {
-                --color: #ff7c7c;
-                --duration: 0.4s;
-                --sin: 0.866;
-                --size: 20px;
-                --playsize: 40px;
-
-                justify-self: center;
-                padding: calc(var(--size) * 0.25);
-                width: var(--size);
-                height: var(--size);
-                white-space: nowrap;
-                text-align: center;
-                cursor: pointer;
-                z-index: 10;
-
-                &,
-                .left,
-                .right,
-                &:before {
-                    display: inline-block;
-                    vertical-align: middle;
-                    transition: border var(--duration), width var(--duration), height var(--duration), margin var(--duration);
-                    transition-timing-function: cubic-bezier(1, 0, 0, 1);
-                }
-
-                &:before {
-                    content: "";
-                    height: var(--size);
-                }
-
-                &.pause {
-
-                    .left,
-                    .right {
-                        margin: 0;
-                        border-left: calc(var(--size) * 0.33) solid #fff;
-                        border-top: 0 solid transparent;
-                        border-bottom: 0 solid transparent;
-                        height: calc(var(--size) * var(--sin));
-                    }
-
-                    .left {
-                        border-right: calc(var(--size) * 0.2) solid transparent;
-                    }
-                }
-
-                &.play {
-                    --border: calc(var(--size) / 4);
-
-                    .left {
-                        margin-left: calc(var(--size) / 6);
-                        border-left: calc(var(--size) * var(--sin) / 2) solid var(--color);
-                        border-top: var(--border) solid transparent;
-                        border-bottom: var(--border) solid transparent;
-                        border-right: 0px solid transparent;
-                        height: calc(var(--size) - 2 * var(--border));
-                    }
-
-                    .right {
-                        margin: 0;
-                        border-left: calc(var(--size) * var(--sin) / 2) solid var(--color);
-                        border-top: var(--border) solid transparent;
-                        border-bottom: var(--border) solid transparent;
-                        height: 0px;
-                    }
-                }
-
-                &:hover {
-                    border-color: #f44;
-                    ;
-
-                    .left,
-                    .right {
-                        border-left-color: #f44;
-                    }
-                }
-            }
-        </style>
 
         <div class="playButton">
             <svg class="scroll-progress-circle" width="90" height="90" viewPort="0 0 100 100" version="1.1"
@@ -184,9 +52,12 @@
     <section id="howItWorks3" style="height: 100vh; width: 100vw; position: relative">
         <H1 style="color: aliceblue;">Symmetrical Trade </H1>
     </section>
+    <section id="ourPartners" style="height: 100vh; width: 100vw; position: relative ">
+        <H1 style="color: aliceblue;">Our partners</H1>
+    </section>
     <section id="reachus" style="height: 100vh; width: 100vw; position: relative ">
         <H1 style="color: aliceblue;">Intent to know more ?</H1>
     </section>
 </main>
 
-<script src="./helperScript.js"></script>
+<script src="./symmioScript.js"></script>

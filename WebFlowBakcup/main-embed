@@ -1,3 +1,4 @@
+<script>
 //---THREE.JS---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 let camera, scene, renderer, uniforms, scrollProgress;
 
@@ -25,7 +26,9 @@ function init() {
   // Vertex shader
   const vertexShaderCode = "void main() {gl_Position = vec4(position, 1.0);}";
   // Fetch the content of the fragment shader file
-  fetch("./fragmentShader.glsl")
+  fetch(
+    "https://cdn.jsdelivr.net/gh/User22807/Based_animation@main/shaderSymm.glsl"
+  )
     .then((response) => response.text())
     .then((fragShaderCode) => {
       const material = new THREE.ShaderMaterial({
@@ -36,7 +39,6 @@ function init() {
 
       var mesh = new THREE.Mesh(geometry, material);
       scene.add(mesh);
-
       // ... (rest of your init() function)
     });
 
@@ -62,24 +64,18 @@ function handleMouseMove(event) {
 
 function animate() {
   requestAnimationFrame(animate);
-
   // Update time
   uniforms["iTime"].value = performance.now() / 1000;
-
-  // Update resolution if needed
   uniforms.iResolution.value.x = window.innerWidth * window.devicePixelRatio;
   uniforms.iResolution.value.y = window.innerHeight * window.devicePixelRatio;
-
   renderer.setSize(window.innerWidth, window.innerHeight);
-
   renderer.render(scene, camera);
 }
+//---MY MAIN---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
 
-//---LIST COUNTER---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+//---LIST COUNTER--
 let counter = 0;
 let counterInterval = null;
-
-// Start counting function
 function startCounter(targetValue, speed = 2) {
   clearInterval(counterInterval); // Clear existing interval
   counterInterval = setInterval(() => {
@@ -87,69 +83,171 @@ function startCounter(targetValue, speed = 2) {
     const direction = targetValue > counter ? 1 : -1;
 
     if (Math.abs(counter - targetValue) >= step) {
+
+
       counter += step * direction;
-
-      // Update colors based on the counter value
       updateColors();
-      setScrollPerc(counter);
-
       uniforms.iAnimTimer.value = counter;
     } else {
-      // Stop the interval when reaching the target value
       counter = targetValue;
       updateColors();
       uniforms.iAnimTimer.value = counter;
       clearInterval(counterInterval);
     }
-  }, 50); // Adjust the interval duration as needed
+  }, 50);
 }
 
-// Reset and stop counting function
 function resetCounter() {
-  clearInterval(counterInterval); // Stop the counter interval
-  counterInterval = null; // Set counterInterval to null
-  // Reset colors to the initial state
+  clearInterval(counterInterval);
+  counterInterval = null;
   updateColors();
 }
-
-// Function to check conditions and start/stop counting
 function animCounter() {
-  // Check if iAnimProgress_1.x is more than 0.1 and iAnimProgress_1.y is less than 0.9
   if (
     uniforms.iAnimProgress_1.value.x > 0.1 &&
     uniforms.iAnimProgress_1.value.y < 0.9
   ) {
-    // Start counting if not already counting
     if (!counterInterval) {
-      startCounter(400); // Set the initial target value
+      startCounter(400);
     }
   } else {
-    // Reset and stop counting if conditions are not met
     resetCounter();
   }
 }
 
-const progress = document.querySelector(".progress");
 
-function setScrollPerc(percentage) {
-  progress.style.strokeDashoffset = 264 - (percentage / 800) * 264;
-}
-
-const playToggle = document.querySelector(".control");
-playToggle.addEventListener("click", function () {
-  playToggle.classList.toggle("play");
-  playToggle.classList.toggle("pause");
-
-  if (playToggle.classList.contains("play")) {
-    resetCounter();
-    // Stop auto-scrolling, scroll to top, and restart auto-scrolling
-  } else {
-    startCounter(400); // Set the initial target value
-    // Start auto-scrolling
-  }
+// Intro animation timeline
+const introTimeline = gsap.timeline();
+introTimeline.from(uniforms.iAnimProgress_2.value, {
+  z: 2,
+  duration: 3.0,
 });
 
-//---GSAP---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    playButton.addEventListener('click', function() {
+      if (playButton.classList.contains("active")) {
+      	playButton.classList.remove('active');
+        resetCounter();
+				}else{
+			  playButton.classList.add('active');
+			  startCounter(400); // Set the initial target value
+			}
+    });
+listItem0.addEventListener("click", function () {
+  startCounter(1,30); // Set the initial target value
+  playButton.classList.remove('active');
+});
+listItem1.addEventListener("click", function () {
+  startCounter(100, 10); // Set the initial target value and speed
+  playButton.classList.remove('active');
+});
+listItem2.addEventListener("click", function () {
+  startCounter(150, 10); // Set the initial target value and speed
+  playButton.classList.remove('active');
+});
+listItem3.addEventListener("click", function () {
+  startCounter(200, 10); // Set the initial target value and speed
+  playButton.classList.remove('active');
+});
+listItem4.addEventListener("click", function () {
+  startCounter(250, 10); // Set the initial target value and speed
+  playButton.classList.remove('active');
+});
+listItem5.addEventListener("click", function () {
+  startCounter(300, 10); // Set the initial target value and speed
+  playButton.classList.remove('active');
+});
+listItem6.addEventListener("click", function () {
+  startCounter(350, 10);
+  playButton.classList.remove('active');
+});
+$(document).ready(function () {
+	sectionTwoWrap.classList.add("disabled");
+	sectionFiveWrap.classList.add("disabled");
+});
+
+ $(window).scroll(function () {
+ //section 2  scroll
+	if (window.scrollY == sectionTwo ) {
+  	sectionTwoWrap.classList.remove("disabled");
+    playButton.classList.add('active');
+		startCounter(400); // Set the initial target value
+    }else {
+  	sectionTwoWrap.classList.add("disabled");
+	  counter=0;
+	}
+ //sections 2-3-4  scroll
+ 	if (window.scrollY >= sectionTwo-50 && window.scrollY < sectionFive-75 ) {
+  	howItWorksBtn.classList.add("red");
+    playButton.classList.add('active');
+ 	}else{
+    howItWorksBtn.classList.remove("red");
+  }
+//section 5 and more  scroll
+  if (window.scrollY >= sectionFive-75 ) {
+  	sectionFiveWrap.classList.remove("disabled");
+    scrollDownElement.style.transform = `scaleY(-1)`;
+  	leanMoreBtn.classList.add("red");
+	}else{
+    sectionFiveWrap.classList.add("disabled");
+    leanMoreBtn.classList.remove("red");
+    scrollDownElement.style.transform = `scaleY(1)`;
+  }
+    
+});
+
+// Update colors based on the counter value
+
+function updateColors() {
+
+// Update progress Circle
+  	var $circle = $('#svg #bar');
+   	var val = counter/4; 
+    var r = 24;
+    var c = Math.PI*(r*2);
+    var pct = ((375-val)/100)*c;
+    $circle.css({ strokeDashoffset: pct});
+    
+
+  if (counter > 50 && counter <= 100) {
+    listItem1.classList.add("red");
+  } else {
+    listItem1.classList.remove("red");
+  }
+
+  if (counter > 100 && counter <= 150) {
+    listItem2.classList.add("red");
+  } else {
+    listItem2.classList.remove("red");
+  }
+
+  if (counter > 150 && counter <= 200) {
+    listItem3.classList.add("red");
+  } else {
+    listItem3.classList.remove("red");
+  }
+  if (counter > 200 && counter <= 250) {
+    listItem4.classList.add("red");
+  } else {
+    listItem4.classList.remove("red");
+  }
+
+  if (counter > 250 && counter <= 300) {
+    listItem5.classList.add("red");
+  } else {
+    listItem5.classList.remove("red");
+  }
+  if (counter > 300 && counter <= 350) {
+    listItem6.classList.add("red");
+  } else {
+    listItem6.classList.remove("red");
+  }
+  if (counter >= 399 ) {
+    counter=0; // Set the initial target value
+  }
+
+}
+
+//---GSAP---
 gsap.to(uniforms.iAnimProgress_1.value, {
   x: 1,
   scrollTrigger: {
@@ -158,6 +256,7 @@ gsap.to(uniforms.iAnimProgress_1.value, {
     end: "100%",
     scrub: true,
     onUpdate: animCounter,
+
   },
 });
 
@@ -200,94 +299,4 @@ gsap.to(uniforms.iAnimProgress_2.value, {
     scrub: true,
   },
 });
-
-// Intro animation timeline
-const introTimeline = gsap.timeline();
-introTimeline.from(uniforms.iAnimProgress_2.value, {
-  z: 2,
-  duration: 3.0,
-});
-
-const listItem0 = document.getElementById("listItem0");
-const listItem1 = document.getElementById("listItem1");
-const listItem2 = document.getElementById("listItem2");
-const listItem3 = document.getElementById("listItem3");
-const listItem4 = document.getElementById("listItem4");
-const listItem5 = document.getElementById("listItem5");
-const listItem6 = document.getElementById("listItem6");
-
-listItem0.addEventListener("click", function () {
-  startCounter(1,30); // Set the initial target value
-  playToggle.classList.remove("play");
-  playToggle.classList.add("pause");
-});
-listItem1.addEventListener("click", function () {
-  startCounter(100, 9); // Set the initial target value and speed
-  playToggle.classList.remove("play");
-  playToggle.classList.add("pause");
-});
-listItem2.addEventListener("click", function () {
-  startCounter(150, 9); // Set the initial target value and speed
-  playToggle.classList.remove("play");
-  playToggle.classList.add("pause");
-});
-listItem3.addEventListener("click", function () {
-  startCounter(200, 9); // Set the initial target value and speed
-  playToggle.classList.remove("play");
-  playToggle.classList.add("pause");
-});
-listItem4.addEventListener("click", function () {
-  startCounter(250, 9); // Set the initial target value and speed
-  playToggle.classList.remove("play");
-  playToggle.classList.add("pause");
-});
-listItem5.addEventListener("click", function () {
-  startCounter(300, 9); // Set the initial target value and speed
-  playToggle.classList.remove("play");
-  playToggle.classList.add("pause");
-});
-listItem6.addEventListener("click", function () {
-  startCounter(350, 9); // Set the initial target value and speed
-  playToggle.classList.remove("play");
-  playToggle.classList.add("pause");
-});
-
-// Update colors based on the counter value
-function updateColors() {
-  if (counter > 50 && counter <= 100) {
-    listItem1.classList.add("red");
-  } else {
-    listItem1.classList.remove("red");
-  }
-
-  if (counter > 100 && counter <= 150) {
-    listItem2.classList.add("red");
-  } else {
-    listItem2.classList.remove("red");
-  }
-
-  if (counter > 150 && counter <= 200) {
-    listItem3.classList.add("red");
-  } else {
-    listItem3.classList.remove("red");
-  }
-  if (counter > 200 && counter <= 250) {
-    listItem4.classList.add("red");
-  } else {
-    listItem4.classList.remove("red");
-  }
-
-  if (counter > 250 && counter <= 300) {
-    listItem5.classList.add("red");
-  } else {
-    listItem5.classList.remove("red");
-  }
-  if (counter > 300 && counter <= 350) {
-    listItem6.classList.add("red");
-  } else {
-    listItem6.classList.remove("red");
-  }
-  if (counter >= 399) {
-    counter = 0; // Set the initial target value
-  }
-}
+</script>
