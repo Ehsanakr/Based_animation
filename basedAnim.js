@@ -4949,19 +4949,16 @@ window.onload = function () {
   };
   an.makeResponsive = function (
     isResp,
-    respDim,
     isScale,
     scaleType,
     domContainers
   ) {
-    var lastW,
-      lastH,
-      lastS = 1;
+    var lastS = 1;
     window.addEventListener("resize", resizeCanvas);
     resizeCanvas();
     function resizeCanvas() {
       var w = lib.properties.width,
-        h = lib.properties.height / 1.2;
+        h = lib.properties.height;
       var iw = window.innerWidth,
         ih = window.innerHeight;
       var pRatio = window.devicePixelRatio,
@@ -5065,7 +5062,7 @@ function handleComplete(evt, comp) {
     createjs.Ticker.addEventListener("tick", stage);
   };
   //Code to support hidpi screens and responsive scaling.
-  AdobeAn.makeResponsive(false, "both", false, 1, [canvas]);
+  AdobeAn.makeResponsive(false, false, 1, [canvas]);
   AdobeAn.compositionLoaded(lib.properties.id);
   fnStartAnimation();
 }
