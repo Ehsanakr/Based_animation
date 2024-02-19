@@ -1047,8 +1047,7 @@ var canvas,
   anim_container,
   fnStartAnimation;
 function init() {
-  canvas = document.getElementById("canvas");
-  anim_container = document.getElementById("canvas");
+  canvas = document.getElementById("canvas2");
   var comp = AdobeAn.getComposition("C58033773B03F94280718366B298C746");
   var lib = comp.getLibrary();
   handleComplete({}, comp);
