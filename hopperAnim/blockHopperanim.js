@@ -1010,8 +1010,7 @@
   an.getComposition = function (id) {
       return an.compositions[id];
   }
-  an.makeResponsive = function (isResp, respDim, isScale, scaleType, domContainers) {
-      var lastW, lastH, lastS = 1;
+  an.makeResponsive = function ( domContainers) {
       window.addEventListener('resize', resizeCanvas);
       resizeCanvas();
       function resizeCanvas() {
@@ -1027,7 +1026,6 @@
           });
           stage.scaleX = pRatio * sRatio;
           stage.scaleY = pRatio * sRatio;
-          lastW = iw; lastH = ih; lastS = sRatio;
           stage.tickOnUpdate = false;
           stage.update();
           stage.tickOnUpdate = true;
@@ -1061,7 +1059,6 @@ var createjsMainHopper, AdobeAnMainHopper;
 function initMainHopper() {
   canvasMainHopper = document.getElementById("canvasMainHopper");
   var comp = AdobeAnMainHopper.getComposition("367C7A929D59DB45BEA40A799CC821FC");
-  var lib = comp.getLibrary();
   handleCompleteMainHopper({}, comp);
 }
 function handleCompleteMainHopper(evt, comp) {
@@ -1077,7 +1074,7 @@ function handleCompleteMainHopper(evt, comp) {
       createjs.Ticker.addEventListener("tick", stage);
   }
   //Code to support hidpi screens and responsive scaling.
-  AdobeAnMainHopper.makeResponsive(false, 'both', false, 1, [canvasMainHopper]);
+  AdobeAnMainHopper.makeResponsive([canvasMainHopper]);
   AdobeAnMainHopper.compositionLoaded(lib.properties.id);
   fnStartAnimation();
 }
