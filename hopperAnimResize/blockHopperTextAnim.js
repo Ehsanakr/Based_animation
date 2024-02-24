@@ -443,7 +443,6 @@
       return an.compositions[id];
   }
   an.makeResponsive = function (domContainers) {
-      var lastW, lastH, lastS = 1;
       window.addEventListener('resize', resizeCanvas);
       resizeCanvas();
       function resizeCanvas() {
