@@ -3,7 +3,7 @@ uniform float iTime;
 uniform vec2 iMouse;
 uniform vec3 iAnimProgress_1;
 float introTime = float(2.5);
-float iAnimIntro; 
+float iAnimIntro;
 // Includes and constants
 #define SCA(a)      vec2(sin(a), cos(a))
 #define HSV2RGB_K  vec4(1.0, 2.0 / 3.0, 1.0 / 3.0, 3.0)
