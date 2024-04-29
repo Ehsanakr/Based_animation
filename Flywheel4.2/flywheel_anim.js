@@ -31,9 +31,6 @@
         this.initialize(img.head_front);
     }).prototype = p = new cjs.Bitmap();
     p.nominalBounds = new cjs.Rectangle(0, 0, 863, 810);
-    (lib.Rectangle6 = function () {
-        this.initialize(img.Rectangle6);
-    }).prototype = p = new cjs.Bitmap();
     p.nominalBounds = new cjs.Rectangle(0, 0, 2508, 1672);
     (lib.Tween19 = function (mode, startPosition, loop, reversed) {
         if (loop == null) { loop = true; }
@@ -282,7 +279,6 @@
         this.shape.graphics.f().ls(["#5DC8FF", "#A596EF", "#F692E6", "#F0C8FB"], [0, 0.369, 0.698, 1], -64.3, 0, 64.4, 0).ss(11, 1, 1).p("AIRicIr/sAQg8g8hVAAQhVAAg8A8Qg8A8AABVQAABVA8A8IJ6J6Ip6J7Qg8A9ABBUQAABVA8A8QA8A8BVAAQBUgBA8g7IL/sAQA8g9AAhUQgBgFAAgEQABgHAAgHQAAhVg8g8g");
         this.shape.setTransform(-0.025, 0);
         this.shape_1 = new cjs.Shape();
-        this.shape_1.graphics.bf(img.Rectangle6, null, new cjs.Matrix2D(1, 0, 0, 1, -1254, -836)).s().p("AoPOcQg8g7AAhVQgBhVA8g8IJ6p7Ip6p6Qg8g7AAhVQAAhVA8g8QA8g9BVAAQBVAAA8A9IL/L/QA8A8AABVIgBAOIABAJQAABUg8A9Ir/L/Qg8A8hUABQhVAAg8g9g");
         this.shape_1.setTransform(-0.025, 0);
         this.timeline.addTween(cjs.Tween.get({}).to({ state: [{ t: this.shape_1 }, { t: this.shape }] }).wait(1));
         this._renderFirstFrame();
@@ -1264,10 +1260,9 @@
         color: "#000000",
         opacity: 0.00,
         manifest: [
-            { src: "images/Blur.png", id: "Blur" },
-            { src: "images/brilho_branco.png", id: "brilho_branco" },
-            { src: "images/head_front.png", id: "head_front" },
-            { src: "images/Rectangle6.png", id: "Rectangle6" }
+            { src: "https://uploads-ssl.webflow.com/65e1a6eea6b2971e360afd9a/65e1a6eea6b2971e360afe18_Blur.png", id: "Blur" },
+            { src: "https://uploads-ssl.webflow.com/65e1a6eea6b2971e360afd9a/65e1a6eea6b2971e360afe1c_brilho_branco.png", id: "brilho_branco" },
+            { src: "https://uploads-ssl.webflow.com/65e1a6eea6b2971e360afd9a/65e1a6eea6b2971e360afe19_head_front.png", id: "head_front" },
         ],
         preloads: []
     };
